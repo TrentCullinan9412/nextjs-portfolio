@@ -1,9 +1,18 @@
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,20 +27,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="flex h-16 px-4 items-center border-b">
-            <Link href="/">
-              <h1 className="text-xl-4">Nextjs Portfolio | Trent Cullinan</h1>
-            </Link>
-            <div className="ml-auto">
-              <ThemeToggle />
+    <ClerkProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <div className="flex h-16 px-4 items-center border-b">
+              <Link href="/">
+                <h1 className="text-xl-4">Nextjs Portfolio | Trent Cullinan</h1>
+              </Link>
+              <div className="ml-auto flex items-center gap-2">
+                <ThemeToggle />
+                <SignedOut>
+                  <Button asChild variant="ghost">
+                    <SignInButton />
+                  </Button>
+                  <Button asChild>
+                    <SignUpButton />
+                  </Button>
+                </SignedOut>
+                <SignedIn>
+                  <UserButton />
+                </SignedIn>
+              </div>
             </div>
-          </div>
-          <div className="p-4">{children}</div>
-        </ThemeProvider>
-      </body>
-    </html>
+            <div className="p-4">{children}</div>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
