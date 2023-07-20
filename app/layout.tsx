@@ -1,6 +1,9 @@
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme/theme-provider";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +19,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div className="flex h-16 px-4 items-center border-b">
+            <Link href="/">
+              <h1 className="text-xl-4">Nextjs Portfolio | Trent Cullinan</h1>
+            </Link>
+            <div className="ml-auto">
+              <ThemeToggle />
+            </div>
+          </div>
+          <div className="p-4">{children}</div>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
