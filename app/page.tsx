@@ -1,3 +1,3 @@
 export default function Home() {
-  return <h1>Nextjs portfolio</h1>;
+  return <h1 className="text-3xl">Nextjs portfolio</h1>;
 }
