@@ -46,7 +46,7 @@ export default function RootLayout({
                   </Button>
                 </SignedOut>
                 <SignedIn>
-                  <UserButton />
+                  <UserButton afterSignOutUrl="/" />
                 </SignedIn>
               </div>
             </div>
