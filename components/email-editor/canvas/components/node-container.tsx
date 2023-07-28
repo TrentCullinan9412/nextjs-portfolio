@@ -56,7 +56,7 @@ const NodeContainer = React.forwardRef<HTMLDivElement, Props>(
 
         {selected && (
           <NodeLabel
-            className="absolute top-[-24px] -left-[0.15em] bg-blue-500 dark:bg-blue-700 text-white text-ellipsis overflow-hidden whitespace-nowrap max-w-full"
+            className="absolute -top-6 -left-[2px] bg-blue-500 dark:bg-blue-700 text-white text-ellipsis overflow-hidden whitespace-nowrap max-w-full"
             label={label}
             onClick={onClick}
           />

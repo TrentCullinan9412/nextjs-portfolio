@@ -7,12 +7,16 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Inter } from "next/font/google";
+import { cn } from "@/lib/utils";
 
 type Props = {
   moveable: boolean;
   removeable: boolean;
   nodeId: string;
 };
+
+const inter = Inter({ subsets: ["latin"] });
 
 export function NodeActions({ nodeId, moveable, removeable }: Props) {
   const { remove, moveOut } = useContext(EmailContext);
@@ -21,7 +25,12 @@ export function NodeActions({ nodeId, moveable, removeable }: Props) {
 
   return (
     <TooltipProvider>
-      <div className="absolute top-0 left-[-2.5rem] bg-primary rounded-md flex flex-col z-50">
+      <div
+        className={cn(
+          "absolute top-0 left-[-2.5rem] bg-primary rounded-md flex flex-col z-50 font-medium not-italic",
+          inter.className,
+        )}
+      >
         {removeable && (
           <Tooltip>
             <TooltipTrigger asChild>
