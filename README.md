@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+A sample [Next.js](https://nextjs.org/) project using [Clerk](https://clerk.com/) and [Supabase](https://supabase.com/), bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+The goal of this application is to provide a visual email editor for [React Email](https://react.email/).
 
 ## Getting Started
 
