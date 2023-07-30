@@ -6,13 +6,13 @@ import { NodeHeader } from "./node-header";
 import { NodeImage } from "./node-image";
 
 export type Props = {
+  rootId: string;
   nodeId: string;
 };
 
-export function NodeTree({ nodeId }: Props) {
-  const { tree, selectedId, setSelectedId, find } = useContext(EmailContext);
+export function NodeTree({ rootId, nodeId }: Props) {
+  const { selectedId, setSelectedId, find } = useContext(EmailContext);
 
-  if (!tree) return null;
   if (!nodeId) return null;
 
   const node = find(nodeId);
@@ -44,7 +44,7 @@ export function NodeTree({ nodeId }: Props) {
     case "image":
       return (
         <NodeContainer
-          root={tree.root}
+          rootId={rootId}
           nodeId={nodeId}
           parentId={parentId}
           label={label}
@@ -60,7 +60,7 @@ export function NodeTree({ nodeId }: Props) {
     case "heading":
       return (
         <NodeContainer
-          root={tree.root}
+          rootId={rootId}
           nodeId={nodeId}
           parentId={parentId}
           label={label}
@@ -70,14 +70,16 @@ export function NodeTree({ nodeId }: Props) {
           innerStyle={style}
         >
           <NodeHeader level={node.as}>
-            {node.children?.map((x) => <NodeTree key={x} nodeId={x} />)}
+            {node.children?.map((x) => (
+              <NodeTree key={x} rootId={rootId} nodeId={x} />
+            ))}
           </NodeHeader>
         </NodeContainer>
       );
     case "hr":
       return (
         <NodeContainer
-          root={tree.root}
+          rootId={rootId}
           nodeId={nodeId}
           parentId={parentId}
           label={label}
@@ -91,7 +93,7 @@ export function NodeTree({ nodeId }: Props) {
     case "column":
       return (
         <NodeContainer
-          root={tree.root}
+          rootId={rootId}
           nodeId={nodeId}
           parentId={parentId}
           label={label}
@@ -102,14 +104,16 @@ export function NodeTree({ nodeId }: Props) {
           innerStyle={style}
         >
           <div>
-            {node.children?.map((x) => <NodeTree key={x} nodeId={x} />)}
+            {node.children?.map((x) => (
+              <NodeTree key={x} rootId={rootId} nodeId={x} />
+            ))}
           </div>
         </NodeContainer>
       );
     default:
       return (
         <NodeContainer
-          root={tree.root}
+          rootId={rootId}
           nodeId={nodeId}
           parentId={parentId}
           label={label}
@@ -117,7 +121,9 @@ export function NodeTree({ nodeId }: Props) {
           selected={selected}
           innerStyle={style}
         >
-          {node.children?.map((x) => <NodeTree key={x} nodeId={x} />)}
+          {node.children?.map((x) => (
+            <NodeTree key={x} rootId={rootId} nodeId={x} />
+          ))}
         </NodeContainer>
       );
   }

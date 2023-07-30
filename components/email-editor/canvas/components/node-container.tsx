@@ -6,7 +6,7 @@ import { NodeActions } from "./node-actions";
 import { CSSProperties } from "react";
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
-  root: string;
+  rootId: string;
   nodeId: string;
   parentId?: string;
   label: string;
@@ -18,7 +18,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 const NodeContainer = React.forwardRef<HTMLDivElement, Props>(
   (
     {
-      root,
+      rootId,
       nodeId,
       parentId,
       label,
@@ -49,8 +49,8 @@ const NodeContainer = React.forwardRef<HTMLDivElement, Props>(
         {selected && (
           <NodeActions
             nodeId={nodeId}
-            moveable={root !== parentId && root !== nodeId}
-            removeable={root !== nodeId}
+            moveable={rootId !== parentId && rootId !== nodeId}
+            removeable={rootId !== nodeId}
           />
         )}
 

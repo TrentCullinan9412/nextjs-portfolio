@@ -11,7 +11,9 @@ export function Canvas() {
     <div className="w-full h-full bg-muted">
       <div className="h-full w-[50vw] mx-auto py-8">
         {tree?.root &&
-          tree.root.map((nodeId) => <NodeTree key={nodeId} nodeId={nodeId} />)}
+          tree.root.map((nodeId) => (
+            <NodeTree key={nodeId} rootId={nodeId} nodeId={nodeId} />
+          ))}
       </div>
     </div>
   );
