@@ -1,7 +1,7 @@
 import { EmailElementMapTree } from "../types";
 
 export const ExampleOne: EmailElementMapTree = {
-  root: "root-container",
+  root: ["root-container"],
   items: {
     "root-container": {
       id: "root-container",

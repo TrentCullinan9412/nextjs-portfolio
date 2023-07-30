@@ -57,6 +57,6 @@ export type EmailElementMap = {
 };
 
 export type EmailElementMapTree = {
-  root: string;
+  root: string[];
   items: EmailElementMap;
 };

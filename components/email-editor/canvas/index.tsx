@@ -10,7 +10,8 @@ export function Canvas() {
   return (
     <div className="w-full h-full bg-muted">
       <div className="h-full w-[50vw] mx-auto py-8">
-        {tree?.root && <NodeTree nodeId={tree?.root} />}
+        {tree?.root &&
+          tree.root.map((nodeId) => <NodeTree key={nodeId} nodeId={nodeId} />)}
       </div>
     </div>
   );
