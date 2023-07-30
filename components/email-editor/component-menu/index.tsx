@@ -6,20 +6,10 @@ import { useDrag } from "react-dnd";
 import { Component, Components } from "./components";
 
 function DraggableComponent({ name, nodeType, Icon }: Component) {
-  const [{ isDragging }, drag, dragPreview] = useDrag(() => ({
+  const [, drag] = useDrag(() => ({
     type: nodeType,
     item: { nodeType },
-    options: {
-      dropEffect: "copy",
-    },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
   }));
-
-  if (isDragging) {
-    return <p ref={dragPreview}>Hello!</p>;
-  }
 
   return (
     <Label
