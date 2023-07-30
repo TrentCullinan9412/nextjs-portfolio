@@ -46,6 +46,8 @@ export type EmailElementNode = EmailElement &
     | Image
   );
 
+export type NodeType = EmailElementNode["type"];
+
 export type EmailNode = EmailElementNode;
 
 export type EmailNodeWithChildren<T = unknown> = T & {
