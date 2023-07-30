@@ -14,6 +14,7 @@ export { HeadingTypes } from "./components";
 export type { Text, HeadingLevel } from "./components";
 
 export type {
+  NodeType,
   EmailElement,
   EmailNode,
   EmailElementNode,
